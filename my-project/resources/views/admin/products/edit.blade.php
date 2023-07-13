@@ -25,7 +25,7 @@
             <label for="">Slug</label>
             <input type="text" name="slug" id="" class="form-control" value="{{$product->slug}}">
         </div>
-        <div>
+        <div style="margin-top: 10px;">
             <button type="submit" class="btn btn-lg btn-success">Atualizar produto</button>
         </div>
     </form>

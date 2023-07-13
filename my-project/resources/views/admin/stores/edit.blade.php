@@ -26,7 +26,7 @@
             <input type="text" name="slug" id="" class="form-control" value="{{$store->slug}}">
         </div>
 
-        <div>
+        <div style="margin-top: 10px;">
             <button type="submit" class="btn btn-lg btn-success">Atualizar a Loja</button>
         </div>
     </form>
