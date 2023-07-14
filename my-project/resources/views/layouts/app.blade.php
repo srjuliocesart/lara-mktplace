@@ -17,11 +17,14 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 @auth
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link @if(request()->is('admin/stores*')) active @endif" aria-current="page" href="{{route('admin.stores.index')}}">Lojas</a>
+                        <li class="nav-item @if(request()->is('admin/stores*')) active @endif">
+                            <a class="nav-link" aria-current="page" href="{{route('admin.stores.index')}}">Lojas</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link @if(request()->is('admin/products*')) active @endif" href="{{route('admin.products.index')}}">Produtos</a>
+                        <li class="nav-item @if(request()->is('admin/products*')) active @endif">
+                            <a class="nav-link" href="{{route('admin.products.index')}}">Produtos</a>
+                        </li>
+                        <li class="nav-item @if(request()->is('admin/categories*')) active @endif">
+                            <a class="nav-link" href="{{route('admin.categories.index')}}">Categorias</a>
                         </li>
                     </ul>
                     <div class="my-2 my-lg-0">

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\StoreController;
 use Illuminate\Support\Facades\Route;
@@ -23,6 +24,7 @@ Route::group(['middleware' => ['auth']],function(){
     Route::prefix('admin')->name('admin.')->group(function(){
         Route::resource('stores',StoreController::class);
         Route::resource('products',ProductController::class);
+        Route::resource('categories',CategoryController::class);
     });
 });
 

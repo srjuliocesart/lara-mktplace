@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
+use App\Models\Category;
 use App\Models\Product;
 use App\Models\Store;
 use Illuminate\Http\Request;
@@ -29,8 +30,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $stores = Store::all(['id','name']);
-        return view('admin.products.create',compact('stores'));
+        $categories = Category::all(['id','name']);
+        return view('admin.products.create',compact('categories'));
     }
 
     /**
@@ -38,9 +39,11 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
+        $request->validated();
         $data = $request->all();
-        $store = Store::find($data['store']);
-        $store->products()->create($data);
+        $store = auth()->user()->store;
+        $product = $store->products()->create($data);
+        $product->categories()->sync($data['categories']);
 
         flash('Produto criado com sucesso!')->success();
         return redirect()->route('admin.products.index');
@@ -60,7 +63,8 @@ class ProductController extends Controller
     public function edit(string $product)
     {
         $product = $this->product->findOrFail($product);
-        return view('admin.products.edit',compact('product'));
+        $categories = Category::all(['id','name']);
+        return view('admin.products.edit',compact('product','categories'));
     }
 
     /**
@@ -68,6 +72,7 @@ class ProductController extends Controller
      */
     public function update(ProductRequest $request, string $product)
     {
+        $request->validated();
         $data = $request->all();
         $product = $this->product->findOrFail($product);
         $product->update($data);
