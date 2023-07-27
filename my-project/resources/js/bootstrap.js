@@ -9,6 +9,9 @@ window.Popper = Popper
 
 import 'bootstrap';
 
+import Inputmask from 'inputmask'
+window.inputmask = Inputmask
+
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
  * to our Laravel back-end. This library automatically handles sending the
