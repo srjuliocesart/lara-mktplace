@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class ProductRequest extends FormRequest
 {
-    protected $redirect = 'admin/products/create';
+    //protected $redirect = 'admin/products/create';
     /**
      * Determine if the user is authorized to make this request.
      */
@@ -27,6 +27,7 @@ class ProductRequest extends FormRequest
             'description' => 'required|min:30',
             'body' => 'required',
             'price' => 'required',
+            'photos.*' => 'image'
         ];
     }
 
@@ -34,7 +35,8 @@ class ProductRequest extends FormRequest
     {
         return [
             'required' => 'O campo :attribute é obrigatório!',
-		    'min'      => 'Campo deve ter no mínimo :min caracteres'
+		    'min'      => 'Campo deve ter no mínimo :min caracteres',
+            'image' =>  'Arquivo não é uma imagem válida!'
         ];
     }
 }

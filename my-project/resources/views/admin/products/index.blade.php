@@ -1,6 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+    @if(!$products)
+        <div class="alert alert-danger">
+            <p>Você precisa criar uma loja antes para ver os produtos</p>
+        </div>
+        <a href="{{route('admin.stores.create')}}" class="btn btn-lg btn-success">Criar Loja</a>
+    @else
     <a href="{{route('admin.products.create')}}" class="btn btn-lg btn-success">Criar produto</a>
     <table class="table table-striped">
         <thead>
@@ -35,4 +41,5 @@
     </table>
 
     {{$products->links()}}
+    @endif
 @endsection

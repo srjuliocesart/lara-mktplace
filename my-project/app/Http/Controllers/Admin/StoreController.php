@@ -6,12 +6,15 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreRequest;
 use App\Models\Store;
 use App\Models\User;
+use App\Traits\UploadTrait;
+use Illuminate\Support\Facades\Storage;
 
 class StoreController extends Controller
 {
+    use UploadTrait;
     public function __construct()
     {
-        $this->middleware('user.has.store')->only(['create','store']);
+       // $this->middleware('user.has.store')->only(['create','store']);
     }
 
     public function index()
@@ -31,6 +34,11 @@ class StoreController extends Controller
         $request->validated();
         $data = $request->all();
         $user = auth()->user();
+
+        if($request->hasFile('logo')){
+            $data['logo'] = $this->uploadImages($request->file('logo'));
+        }
+
         $user->store()->create($data);
         flash('Loja criada com sucesso')->success();
         return redirect()->route('admin.stores.index');
@@ -44,9 +52,18 @@ class StoreController extends Controller
 
     public function update(StoreRequest $request, $store)
     {
+
         $request->validated();
         $data = $request->all();
         $store = Store::find($store);
+
+        if($request->hasFile('logo')){
+            if(Storage::disk('public')->exists($store->logo)){
+                Storage::disk('public')->delete($store->logo);
+            }
+            $data['logo'] = $this->uploadImages($request->file('logo'), 'logo');
+        }
+
         $store->update($data);
         flash('Loja atualizada com sucesso')->success();
         return redirect()->route('admin.stores.index');

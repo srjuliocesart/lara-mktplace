@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class StoreRequest extends FormRequest
 {
-    protected $redirect = 'admin/stores/create';
+//    protected $redirect = 'admin/stores/edit';
     /**
      * Determine if the user is authorized to make this request.
      */
@@ -26,7 +26,8 @@ class StoreRequest extends FormRequest
             'name'          => 'required',
             'description'   => 'required|min:10',
             'phone'         => 'required',
-            'mobile_phone'  => 'required'
+            'mobile_phone'  => 'required',
+            'logo'          => 'image'
         ];
     }
 
@@ -34,7 +35,8 @@ class StoreRequest extends FormRequest
     {
         return [
             'min' => ':attribute precisa de no mínimo :min caracters',
-            'required' => 'O campo :attribute é obrigatório'
+            'required' => 'O campo :attribute é obrigatório',
+            'image' =>  'Arquivo não é uma imagem válida!'
         ];
     }
 }

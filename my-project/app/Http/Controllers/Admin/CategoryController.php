@@ -19,6 +19,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = $this->category->paginate(10);
+//        dd($categories);
 
         return view('admin.categories.index',compact('categories'));
     }
@@ -72,7 +73,7 @@ class CategoryController extends Controller
         $category = $this->category->findOrFail($category);
         $category->update($data);
 
-        flash('Produto atualizado com sucesso!')->success();
+        flash('Categoria atualizada com sucesso!')->success();
         return redirect()->route('admin.categories.index');
     }
 
@@ -84,7 +85,7 @@ class CategoryController extends Controller
         $category = $this->category->findOrFail($category);
         $category->delete();
 
-        flash('Produto apagado com sucesso!')->success();
+        flash('Categoria apagada com sucesso!')->success();
         return redirect()->route('admin.categories.index');
     }
 }

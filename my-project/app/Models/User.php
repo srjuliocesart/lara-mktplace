@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role'
     ];
 
     /**
@@ -43,7 +44,19 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function store(){
+    public function store()
+    {
         return $this->hasOne(Store::class);
+    }
+
+    public function orders()
+    {
+        return $this->hasMany(UserOrder::class);
+    }
+
+    public function routeNotificationForVonage($notification): string
+    {
+        $storeMobilePhoneNumber = trim(str_replace(['(',')',' ','-'],'', $this->store->mobile_phone));
+        return '55'.$storeMobilePhoneNumber;
     }
 }

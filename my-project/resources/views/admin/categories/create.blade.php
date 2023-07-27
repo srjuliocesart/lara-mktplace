@@ -26,8 +26,7 @@
             </div>
             @enderror
         </div>
-
-        <div>
+        <div style="margin-top: 10px;">
             <button type="submit" class="btn btn-lg btn-success">Criar Categoria</button>
         </div>
     </form>

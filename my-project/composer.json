@@ -6,12 +6,18 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
-        "guzzlehttp/guzzle": "^7.2",
+        "guzzlehttp/guzzle": "^7.7",
         "laracasts/flash": "^3.2",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.8",
-        "laravel/ui": "^4.2"
+        "laravel/ui": "^4.2",
+        "laravel/vonage-notification-channel": "^3.2",
+        "nyholm/psr7": "^1.8",
+        "pagseguro/pagseguro-php-sdk": "^4.2",
+        "railsware/mailtrap-php": "^1.7",
+        "spatie/laravel-sluggable": "^3.5",
+        "symfony/http-client": "^6.3"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
@@ -27,7 +33,8 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
+        },
+        "files": ["helpers/functions.php"]
     },
     "autoload-dev": {
         "psr-4": {
