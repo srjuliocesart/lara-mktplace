@@ -1,13 +1,13 @@
-# lara-mktplace
+# Lara-mktplace
 In a distant view this is going to be a CMS for marketplaces (I don't know how neither know why, it's just a excuse to study more of it).
 This project has the primary intention to build a fundamental marketplace to later being inserted in into a Laravel with React application.
 
 ## The project
-This project could be in theory launched in any machine just by starting the docker-compose with:
+This project could be in theory launched in any machine just by starting the docker-compose (don't forget to set the proper
+directory in the yml file, in this case I'm setting this project as lara-mktplace - feel free to name it as you want) with:
 ```
 docker-compose-up
 ```
-
 and then executing the migrations and seeding the tables to have something to work with it with the following commands:
 ```
 docker-compose exec myapp php artisan migrate
