@@ -38,6 +38,7 @@ Route::prefix('checkout')->name('checkout.')->group(function(){
     Route::get('/',[CheckoutController::class,'index'])->name('index');
     Route::post('/process',[CheckoutController::class,'process'])->name('process');
     Route::get('/thanks', [CheckoutController::class, 'thanks'])->name('thanks');
+    Route::post('/notification', [CheckoutController::class, 'notification'])->name('notification');
 });
 Route::get('my-orders', [UserOrderController::class, 'index'])->name('user.orders')->middleware('auth');
 Route::group(['middleware' => ['auth','access.control.store.admin']],function(){

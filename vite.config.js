@@ -6,6 +6,8 @@ export default defineConfig({
         laravel({
             input: [
                 'resources/js/app.js',
+                'resources/js/pagseguro_functions.js',
+                'resources/js/pagseguro_events.js'
             ]
         }),
     ],resolve: {

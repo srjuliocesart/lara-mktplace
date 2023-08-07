@@ -68,6 +68,6 @@
 @section('scripts')
 <script type="module" src="https://cdn.jsdelivr.net/gh/plentz/jquery-maskmoney@master/dist/jquery.maskMoney.min.js"></script>
 <script type="module">
-    $('#price').maskMoney({prefix: 'R$', allowNegative: false, thousands: '.', decimal: ','});
+    $('#price').maskMoney({prefix: '', allowNegative: false, thousands: '.', decimal: ','});
 </script>
 @endsection
